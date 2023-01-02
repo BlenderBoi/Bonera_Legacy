@@ -26,6 +26,37 @@ By Using the Bone Chain From Object Hierarchy Operator in Object Mode, it create
 
 
 
+### Quickly Rig Curve Related Object
+
+Curve Object are often used for things such as Hair, Grass, Ropes, Wires or any tube like items, While it is a very useful thing, rigging a rope involving Hooking Curve Points One By One, this can be very time consuming, and so this addon can help speed up this process
+
+You Can Create the Bone in a Chain Like Manner Using Bone Chain From Curve
+
+[BoneChainFromCurve.webm](https://user-images.githubusercontent.com/79613445/210190586-c3e02e73-7311-4b28-890a-5755fe454b75.webm)
+
+### Apply Bone Shape Easily
+
+Creating Bone Shape can be a Tedious Process, But most of the time, People Uses some a set of commonly used shape, Using Add / Apply Bone Shape, you can use Premade Bone Shape and Apply to Bones Speeding things Up.
+
+You can Even add your Own Bone Shape by Adding your Own Widget in AddonDirectory/Bonera/Widget/
+
+[ApplyBoneShape.webm](https://user-images.githubusercontent.com/79613445/210190606-75279c3a-24c1-4063-94bc-039709d2cc35.webm)
+
+### Quick IK Setup
+
+Quickly Set Up IK by using Generate IK to creates IK Controller Bone and / or Pole Bone quickly while set up the IK Constraint Quickly. 
+
+[QuickIK.webm](https://user-images.githubusercontent.com/79613445/210190630-f9b34c8a-65d3-4157-83f0-8b21dee85294.webm)
+
+### Create Bones From Selected
+
+You Can use Create Bone from Selected to Quickly Create Multiple Bones in Edit Mode from Selected Vertices, Edges or Faces, or Curve Points. The Operator will work for different Context, including in Edit Mesh, Edit Curve, Edit Armature, Pose, and Object Mode. 
+
+[CreateFromSelectedEditMeshIndividual.webm](https://user-images.githubusercontent.com/79613445/210190711-4b5e3c3d-5d7d-4f63-beb8-c63db8cc1034.webm)
+
+[CreateFromSelectedObjectIndividual.webm](https://user-images.githubusercontent.com/79613445/210190714-01619bb2-1574-4f41-a9cb-1b5d61a8600b.webm)
+
+
 ### Generate Eyelid
 
 Generate Eyelid set up in One Click
@@ -38,3 +69,13 @@ Generate Eyelid set up in One Click
 Easily Generates Stretch Chain in just a few clicks, Useful if you use alot of Stretchy Bones
 
 [GenerateStretchChain.webm](https://user-images.githubusercontent.com/79613445/210190228-583f6039-2567-48da-bae9-674c2130b26b.webm)
+
+### Generate Twist Bone
+
+Generate Twist Bone is a Quick Setup for Twist Bone especially for Forearm, this can use to prevent the "Candy Wrap Effects"
+
+[GenerateTwistBone.webm](https://user-images.githubusercontent.com/79613445/210190555-b46a3c69-8223-4232-b634-78cb11bcaf02.webm)
+
+# More Features:
+
+Find out more in Bonera Documentation 
