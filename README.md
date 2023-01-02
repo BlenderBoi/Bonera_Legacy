@@ -76,4 +76,6 @@ Generate Twist Bone is a Quick Setup for Twist Bone especially for Forearm, this
 
 [GenerateTwistBone.webm](https://user-images.githubusercontent.com/79613445/210190555-b46a3c69-8223-4232-b634-78cb11bcaf02.webm)
 
-# [Bonera Documentation](https://boneradocumentation.readthedocs.io/en/latest/index.html)
+# More Features & Documentation
+
+Find Out More At [Bonera Documentation](https://boneradocumentation.readthedocs.io/en/latest/index.html)
