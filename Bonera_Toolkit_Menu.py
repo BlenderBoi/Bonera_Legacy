@@ -152,6 +152,7 @@ class BONERA_MT_Bonera_Utility_Menu(bpy.types.Menu):
 
 
             layout.separator()
+            layout.operator("bonera.align_parent_to_child", text="Align Parent To Child", icon="BONE_DATA")
             layout.operator("bonera.orphan_parent", text="Orphan Parent", icon="CON_CHILDOF")
             layout.operator("bonera.parent_object_to_bone_by_name", text="Parent Object to Bone by Name", icon="CON_CHILDOF")
             layout.separator()

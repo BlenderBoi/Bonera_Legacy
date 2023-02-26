@@ -165,6 +165,7 @@ class BONERA_ARMATURE_PT_Hierarchy_Template(bpy.types.Panel):
 
 
 
+
         row = layout.row(align=True)
         row.operator("bonera.import_hierarchy_template", text="Import", icon="IMPORT")
         row.operator("bonera.export_hierarchy_template", text="Export", icon="EXPORT")
@@ -606,6 +607,106 @@ class BONERA_HT_Apply_Template_Hierarchy(bpy.types.Operator):
         Utility_Functions.update_UI()
         return {'FINISHED'}
 
+
+
+class BONERA_Align_Parent_To_Child(bpy.types.Operator):
+    """Align Parent Bone to Child"""
+    bl_idname = "bonera.align_parent_to_child"
+    bl_label = "Align Parent To Child"
+    bl_options = {'UNDO', "REGISTER"}
+
+    connect_bone: bpy.props.BoolProperty(default=False)
+
+    def draw(self, context):
+        layout = self.layout
+        layout.label(text="This is a Destructive Operation, Are You Sure?", icon="ERROR")
+        layout.prop(self, "connect_bone", text="Connect Bone")
+
+
+    def invoke(self, context, event):
+
+        return context.window_manager.invoke_props_dialog(self)
+
+
+    def execute(self, context):
+
+        scn = context.scene
+        selected_objects = [obj for obj in context.selected_objects if obj.type == "ARMATURE"]
+        
+        mode = context.mode
+
+        
+
+        if len(selected_objects) > 0:
+
+            restore_mode = selected_objects[0].mode
+
+
+            for obj in selected_objects:
+
+                Utility_Functions.object_switch_mode(obj, "EDIT")
+                bonera_data = scn.Bonera_Scene_Data
+
+                for bone in obj.data.edit_bones:
+
+                    if mode in ["EDIT_ARMATURE", "POSE"]:
+                        if not bone.select:
+                            continue
+
+                    if bone:
+
+                        child_bone_pos = [cb.head for cb in bone.children]
+                        child_midpoint = Utility_Functions.midpoint(child_bone_pos, "CENTER") 
+
+
+                        for child_bone in bone.children:
+                            bone.tail = child_midpoint
+                            if self.connect_bone:
+                                child_bone.use_connect = True
+                                # child_bone.parent = bone
+
+
+
+            Utility_Functions.object_switch_mode(obj, restore_mode)
+
+
+
+
+
+
+
+
+
+
+
+        Utility_Functions.update_UI()
+        return {'FINISHED'}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ENUM_Rename_Mode = [("REPLACE", "Replace", "Replace"), ("PREFIX","Prefix","Prefix"),("SUFFIX","Suffix","Suffix")]
 
 class BONERA_HT_Batch_Rename(bpy.types.Operator):
@@ -699,7 +800,7 @@ class BONERA_HT_Batch_Rename(bpy.types.Operator):
 
 
 
-classes=[BONERA_HT_Batch_Rename, BONERA_HT_Apply_Template_Hierarchy, BONERA_HT_Create_Template_From_Armature, BONERA_HT_Children_List_Operator, BONERA_HT_Parent_List_Operator, BONERA_UL_Hierarchy_Children, BONERA_UL_Hierarchy_Parent, BONERA_UL_Hierarchy_Template, BONERA_Hierarchy_Template_List_Operator]
+classes=[BONERA_Align_Parent_To_Child, BONERA_HT_Batch_Rename, BONERA_HT_Apply_Template_Hierarchy, BONERA_HT_Create_Template_From_Armature, BONERA_HT_Children_List_Operator, BONERA_HT_Parent_List_Operator, BONERA_UL_Hierarchy_Children, BONERA_UL_Hierarchy_Parent, BONERA_UL_Hierarchy_Template, BONERA_Hierarchy_Template_List_Operator]
 
 def register():
 

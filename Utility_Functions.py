@@ -498,7 +498,7 @@ def append_bone_shape(path):
 
     if path != "None":
         path = path
-        section = "\\Object\\"
+        section = "/Object/"
         directory = path + section
         filename = "Widget"
 
