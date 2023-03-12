@@ -442,18 +442,23 @@ class BONERA_OP_Create_Bones_From_Selected(bpy.types.Operator):
         if self.Choice_Armature == "NEW":
             armature_object = Create_Armature(self.New_Armature_Name)
             armature_object.show_in_front = True
+            return armature_object
         else:
             armature_object = scn.Bonera_Scene_Data.Bone_From_Selection_Armature
+            return armature_object
+
 
         if not armature_object:
             armature_object = Create_Armature(self.New_Armature_Name)
             armature_object.show_in_front = True
+            return armature_object
         else:
             if context.view_layer.objects.get(armature_object.name):
                 pass
             else:
                 armature_object = Create_Armature(self.New_Armature_Name)
                 armature_object.show_in_front = True
+                return armature_object
 
         context.view_layer.update()
 
