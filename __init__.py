@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Bonera",
     "author": "BlenderBoi",
-    "version": (1, 3, 0),
+    "version": (1, 3, 1),
     "blender": (3, 4, 0),
     "description": "",
     "doc_url": "https://blenderboi.github.io/Bonera1.1_Addon_Documentation/",
