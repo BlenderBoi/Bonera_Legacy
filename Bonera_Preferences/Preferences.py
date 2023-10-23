@@ -2,12 +2,12 @@ import bpy
 import os
 import rna_keymap_ui
 
-from Bonera_Toolkit import Utility_Functions
-from Bonera_Toolkit import Pair_List_Renamer
-from Bonera_Toolkit import Pseudo_Bone_Layer
-from Bonera_Toolkit import Bone_Slider_Generator
-from Bonera_Toolkit import Bonera_Toolkit_Operators
-from Bonera_Toolkit import Hierarchy_Template
+from .. import Utility_Functions
+from .. import Pair_List_Renamer
+from .. import Pseudo_Bone_Layer
+from .. import Bone_Slider_Generator
+from .. import Bonera_Toolkit_Operators
+from .. import Hierarchy_Template
 from . import Affixes_Preset_List
 
 

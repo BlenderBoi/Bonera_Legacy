@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 import mathutils
 
 ENUM_Choice_Armature = [("NEW","New","New"),("EXIST","Existing","Existing")]

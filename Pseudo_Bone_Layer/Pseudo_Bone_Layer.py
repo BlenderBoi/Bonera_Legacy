@@ -1,6 +1,6 @@
 import bpy
 # from .. import Utility
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 class BONERA_PBL_Layer(bpy.types.PropertyGroup):
     bone : bpy.props.StringProperty()

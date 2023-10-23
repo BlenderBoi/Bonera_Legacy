@@ -1,6 +1,6 @@
 import bpy
 
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 ENUM_Mode = [("BONE","Bone","Bone"),("NAME","Object Name","Object Name"), ("STRING", "String", "String")]
 

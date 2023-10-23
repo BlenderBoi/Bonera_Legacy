@@ -1,6 +1,6 @@
 import bpy
 from mathutils import Vector, Matrix
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 #Select Two bone
 
 ENUM_Type = [("TRACK_TO","Track To","Track To"), ("DAMPED_TRACK","Damped Track","Damped Track"), ("LOCKED_TRACK","Locked Track","Locked Track")]

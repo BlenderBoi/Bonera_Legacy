@@ -1,7 +1,7 @@
 import bpy
 import mathutils
 import numpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 import math
 

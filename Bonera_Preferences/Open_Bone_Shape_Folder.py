@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 
 class BONERA_Open_Bone_Shape_Folder(bpy.types.Operator):

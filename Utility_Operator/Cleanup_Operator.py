@@ -1,7 +1,7 @@
 import bpy
 from bpy_extras import anim_utils
 import os
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 
 

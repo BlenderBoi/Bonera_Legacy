@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 
 ENUM_Constraint = [("TRACK_TO","Track To","Track To"),("STRETCH_TO","Stretch To","Stretch To")]

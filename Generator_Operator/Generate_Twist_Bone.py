@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 #Editing bone
 
 ENUM_Influence_Falloff = [("SUB","Subtraction","Subtraction"),("RD","Recursive Divide","Divide"),("DBC","Divide By Count","Divide By Count")]

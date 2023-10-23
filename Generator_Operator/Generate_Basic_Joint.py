@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 import math
 
 ENUM_Joint_Type = [("HINGE","Hinge","Hinge"),("PIVOT","Pivot / Twist","Pivot / Twist")]

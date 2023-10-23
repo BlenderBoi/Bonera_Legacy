@@ -4,7 +4,7 @@ import bmesh
 import numpy
 import mathutils
 
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 
 OPERATOR_POLL_CONTEXT = ["EDIT_MESH"]

@@ -1,6 +1,6 @@
 
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 import mathutils
 
