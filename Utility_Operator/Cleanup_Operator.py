@@ -82,7 +82,7 @@ class BONERA_Remove_Animation_Data(bpy.types.Operator):
     def execute(self, context):
 
         object = context.object
-        
+
         if object:
             object.animation_data_clear()
             object.data.animation_data_clear()

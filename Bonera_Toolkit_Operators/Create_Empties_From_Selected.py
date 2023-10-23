@@ -807,7 +807,7 @@ class BONERA_OP_Create_Empties_From_Selected(bpy.types.Operator):
 
                                 Utility_Functions.Hook_Vertex_Empty(obj, Empty_Object, indices, name=Empty_Object.name)
 
-                    
+
                         if mode == "EDIT_MESH":
 
                             if bind_mode == "PARENT_VERTEX":

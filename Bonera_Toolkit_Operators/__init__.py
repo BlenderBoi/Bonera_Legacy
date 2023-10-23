@@ -26,8 +26,8 @@ modules = [
     Create_Bone_Chain_From_Object_Hierarchy,
     Create_Bone_From_Vertex_Group,
     Create_Bone_Chain_From_Curve,
-    Create_Spline_Bone_From_Curve, 
-    Create_Empties_From_Selected_Bones_And_Follow_Path, 
+    Create_Spline_Bone_From_Curve,
+    Create_Empties_From_Selected_Bones_And_Follow_Path,
     Create_Bone_Chain_From_Select_Order,
     Bonadd,
     Bonera_Toolkit_Panel

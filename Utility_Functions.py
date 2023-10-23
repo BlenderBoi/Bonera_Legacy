@@ -403,11 +403,11 @@ def Average_Normals(Normals):
 
 def Add_Weight(object, bone_name, indices):
 
-    Vertex_Group = object.vertex_groups.get(bone_name) 
+    Vertex_Group = object.vertex_groups.get(bone_name)
 
     if Vertex_Group == None:
         Vertex_Group = object.vertex_groups.new( name = bone_name )
-        
+
 
 
     Vertex_Group.add(indices, 1.0, 'REPLACE' )

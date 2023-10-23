@@ -36,19 +36,19 @@ class BONERA_OP_Constraint_Bones_To_Object_By_Name(bpy.types.Operator):
         if armature is not None:
 
             if armature.type == "ARMATURE":
-    
+
                 bones = armature.pose.bones
 
                 if self.check_mode == "EXACT":
-                    
+
                     for obj in selected_objects:
 
                         bone = bones.get(obj.name)
 
                         if bone is not None:
 
-                            constraint = bone.constraints.new("COPY_TRANSFORMS") 
-                            constraint.target = obj 
+                            constraint = bone.constraints.new("COPY_TRANSFORMS")
+                            constraint.target = obj
 
                             for modifier in obj.modifiers:
                                 if modifier.type == "ARMATURE":
@@ -56,10 +56,10 @@ class BONERA_OP_Constraint_Bones_To_Object_By_Name(bpy.types.Operator):
 
                 if self.check_mode == "INCLUDE":
                     for bone in bones:
-                        
+
                         for obj in selected_objects:
                             if obj.name in bone.name or bone.name in obj.name:
-                                
+
                                 constraint = bone.constraints.new("COPY_TRANSFORMS")
                                 constraint.target = obj
 
@@ -69,7 +69,7 @@ class BONERA_OP_Constraint_Bones_To_Object_By_Name(bpy.types.Operator):
             else:
                 self.report({"INFO"}, "Active Object Must Be Armature Object")
 
-                        
+
 
         return {'FINISHED'}
 

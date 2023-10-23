@@ -143,11 +143,11 @@ class BONERA_Generate_Twist_Bone(bpy.types.Operator):
                         constraint.subtarget = master_twist.name
                         if self.influence_falloff == "RD":
                             influences = 1
-                            for amt in range(count): 
+                            for amt in range(count):
                                 influences = influences / 2
 
                             constraint.influence = influences
-                       
+
                         if self.influence_falloff == "DBC":
                             constraint.influence = 1/(count+1)
 

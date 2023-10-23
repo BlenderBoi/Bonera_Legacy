@@ -216,7 +216,7 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
         armature = self.Set_Up_Armature(context)
 
         if self.Choice_Armature == "NEW":
-            self.Choice_Armature = "EXIST" 
+            self.Choice_Armature = "EXIST"
 
             context.scene.Bonera_Scene_Data.Bone_From_Selection_Armature = armature
 
@@ -246,7 +246,7 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
 
                     me = obj.data
                     bm = bmesh.from_edit_mesh(me)
-                    
+
                     bm.verts.layers.deform.verify()
                     deform = bm.verts.layers.deform.active
 
@@ -256,55 +256,55 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
                     indices = []
 
                     previous_bone = None
-                    
+
                     for index, select_element in enumerate(bm.select_history):
-                        
+
                         next_index = index + 1
                         head_co = None
                         tail_co = None
-                        
+
                         if type(select_element) == bmesh.types.BMVert:
-                            
+
                             head_co = select_element.co
                             indices = [select_element.index]
 
-                            
+
                         if type(select_element) == bmesh.types.BMEdge:
-                            
+
                             edge_verts = [vert.co for vert in select_element.verts]
                             edge_mid = numpy.sum(edge_verts, axis=0) / len(edge_verts)
-                            
+
                             head_co = edge_mid
 
                             indices = [vert.index for vert in select_element.verts]
 
-                            
+
                         if type(select_element) == bmesh.types.BMFace:
-                            
+
                             head_co = select_element.calc_center_median()
 
                             indices = [vert.index for vert in select_element.verts]
-                    
-                    
+
+
                         if len(bm.select_history) > next_index:
-                            
+
                             next_select_element = bm.select_history[next_index]
-                            
-                                
+
+
                             if type(next_select_element) == bmesh.types.BMVert:
-                                
+
                                 tail_co = next_select_element.co
 
-                                
+
                             if type(next_select_element) == bmesh.types.BMEdge:
-                                
+
                                 edge_verts = [vert.co for vert in next_select_element.verts]
                                 edge_mid = numpy.sum(edge_verts, axis=0) / len(edge_verts)
-                                
+
                                 tail_co = edge_mid
-                                
+
                             if type(next_select_element) == bmesh.types.BMFace:
-                                
+
                                 tail_co = next_select_element.calc_center_median()
 
 
@@ -312,10 +312,10 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
 
 
 
-                        
+
                         if head_co is not None:
                         # if head_co is not None:
-                                
+
 
                             if tail_co is not None:
 
@@ -334,13 +334,13 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
                             else:
 
                                 bone = previous_bone
-                                
+
 
 
                             if bone is not None:
 
 
-                                vg_create = [bone.name, indices] 
+                                vg_create = [bone.name, indices]
                                 vertex_groups_create.append(vg_create)
 
 
@@ -352,8 +352,8 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
                                             bone.use_connect = True
 
                                 previous_bone = bone
-                            
-                        
+
+
 
                     set_mode(armature, mode="OBJECT")
                     bmesh.update_edit_mesh(me, loop_triangles=True)
@@ -361,7 +361,7 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
 
                     if self.apply_weight:
                         for vg_create in vertex_groups_create:
-                            
+
                             bone_name = vg_create[0]
                             vg_indices = vg_create[1]
 
@@ -369,7 +369,7 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
                             # vg = obj.vertex_groups.get(bone_name)
                             # if vg is not None:
                             #     obj.vertex_groups.remove(vg)
-                                
+
                             New_Vertex_Group = Utility_Functions.Add_Weight(obj, bone_name, vg_indices)
 
 
@@ -378,9 +378,9 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
 
 
 
-    
-    
-    
+
+
+
 
 
 

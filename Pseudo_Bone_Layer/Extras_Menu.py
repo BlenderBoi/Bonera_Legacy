@@ -15,8 +15,8 @@ class BONERA_MT_PBL_Icon_Expose_Menu(bpy.types.Menu):
 
         options = [
             ("ICON_PBL_Key_Bone", "Key Bone", "KEYTYPE_KEYFRAME_VEC"),                      #
-            ("ICON_PBL_Mute_Constraint", "Mute Constraint", "CONSTRAINT"),        
-            ("ICON_PBL_Solo", "Solo", "SOLO_ON"),        
+            ("ICON_PBL_Mute_Constraint", "Mute Constraint", "CONSTRAINT"),
+            ("ICON_PBL_Solo", "Solo", "SOLO_ON"),
             ("ICON_PBL_Visibility", "Hide or Unhide", "HIDE_OFF"),                      #
             ("ICON_PBL_Select", "Select", "RESTRICT_SELECT_OFF"),                      #
             ("ICON_PBL_Deform", "Set Deform", "OUTLINER_OB_ARMATURE"),                      #
@@ -25,7 +25,7 @@ class BONERA_MT_PBL_Icon_Expose_Menu(bpy.types.Menu):
 
 
         for option in options:
-            
+
             if option[2]:
 
                 row = layout.row(align=True)

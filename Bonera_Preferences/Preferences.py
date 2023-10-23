@@ -27,7 +27,7 @@ def get_pie_menu(km, operator, menu):
 
 
 def append_panel_class(panels, cls, category, label):
-    panel = cls 
+    panel = cls
     item = [panel, category, label]
     panels.append(item)
 
@@ -47,31 +47,31 @@ def update_panel(self, context):
     panel_class = Pseudo_Bone_Layer.Pseudo_Bone_Layer.BONERA_PT_Pseudo_Layer_Panel
     category = addon_preferences.PANEL_Pseudo_Bone_Layer_Category
     label = addon_preferences.PANEL_Pseudo_Bone_Layer_Label
-    panels = append_panel_class(panels, panel_class, category, label) 
+    panels = append_panel_class(panels, panel_class, category, label)
 
 
     panel_class = Bonera_Toolkit_Operators.Bonera_Toolkit_Panel.BONERA_PT_Bonera_Toolkit_Panel
     category = addon_preferences.PANEL_Bonera_Toolkit_Category
     label = addon_preferences.PANEL_Bonera_Toolkit_Label
-    panels = append_panel_class(panels, panel_class, category, label) 
+    panels = append_panel_class(panels, panel_class, category, label)
 
 
     panel_class = Pair_List_Renamer.Pair_List_Renamer_Panel.BONERA_PT_Pair_List_Renamer
     category = addon_preferences.PANEL_Pair_List_Renamer_Category
     label = addon_preferences.PANEL_Pair_List_Renamer_Label
-    panels = append_panel_class(panels, panel_class, category, label) 
+    panels = append_panel_class(panels, panel_class, category, label)
 
 
     panel_class = Bone_Slider_Generator.Bone_Slider_Generator_Panel.BONERA_ARMATURE_PT_BONE_UI_Generator
     category = addon_preferences.PANEL_Bone_Slider_Generator_Category
     label = addon_preferences.PANEL_Bone_Slider_Generator_Label
-    panels = append_panel_class(panels, panel_class, category, label) 
+    panels = append_panel_class(panels, panel_class, category, label)
 
 
     panel_class = Hierarchy_Template.Hierarchy_Template_Panel.BONERA_ARMATURE_PT_Hierarchy_Template
     category = addon_preferences.PANEL_Hierarchy_Template_Category
     label = addon_preferences.PANEL_Hierarchy_Template_Label
-    panels = append_panel_class(panels, panel_class, category, label) 
+    panels = append_panel_class(panels, panel_class, category, label)
 
 
     try:
@@ -81,7 +81,7 @@ def update_panel(self, context):
             panel = item[0]
             category = item[1]
             label = item[2]
-           
+
             if "bl_rna" in panel.__dict__:
                 bpy.utils.unregister_class(panel)
 
@@ -252,7 +252,7 @@ class BONERA_user_preferences(bpy.types.AddonPreferences):
         layout.label(text="Panels: ")
 
         layout.prop(self, "SECTION_Bonera_Toolkit", text="Bonera Toolkit")
-        
+
         if self.SECTION_Bonera_Toolkit:
             box = layout.box()
             box.prop(self, "PANEL_Bonera_Toolkit_Category", text="Category")
