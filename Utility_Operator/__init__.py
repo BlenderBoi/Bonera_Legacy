@@ -19,10 +19,10 @@ from . import Constraint_Bones_To_Object_By_Name
 from . import Move_Object_To_Bone_By_Name
 from . import Join_And_Parent_Selected_To_Bone_By_Armature_Name
 
-from . import Proximity_Parent 
+from . import Proximity_Parent
 
 modules = [
-    Convert_Bendy_Bones_To_Bones, 
+    Convert_Bendy_Bones_To_Bones,
     Create_Empty_And_Copy_Transform_Bone,
     Constraint_Toogle,
     Cleanup_Operator,
@@ -34,7 +34,7 @@ modules = [
     Constraint_To_Armature,
     Duplicate_And_Constraint,
     Fix_IK_Angle,
-    Weight_Object, 
+    Weight_Object,
     Constraint_Bones_To_Object_By_Name,
     Move_Object_To_Bone_By_Name,
     Join_And_Parent_Selected_To_Bone_By_Armature_Name,

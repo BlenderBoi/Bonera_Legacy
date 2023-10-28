@@ -1,6 +1,6 @@
 import bpy
 
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 ENUM_Mode = [("BONE","Bone","Bone"),("NAME","Object Name","Object Name"), ("STRING", "String", "String")]
 
@@ -11,7 +11,7 @@ class BONERA_Weight_Object(bpy.types.Operator):
     bl_label = "Weight Object To Bones"
     bl_options = {'UNDO', 'REGISTER'}
 
-    Mode: bpy.props.EnumProperty(items=ENUM_Mode) 
+    Mode: bpy.props.EnumProperty(items=ENUM_Mode)
     Bone: bpy.props.StringProperty()
     Name: bpy.props.StringProperty()
     Add_Armature_Modifier: bpy.props.BoolProperty(default=False)
@@ -19,7 +19,7 @@ class BONERA_Weight_Object(bpy.types.Operator):
 
     def invoke(self, context, event):
 
-    
+
 
         return context.window_manager.invoke_props_dialog(self)
 
@@ -34,7 +34,7 @@ class BONERA_Weight_Object(bpy.types.Operator):
             layout.prop(self, "Name", text="String")
 
         layout.prop(self, "Add_Armature_Modifier", text="Add Armature Modifier")
-        
+
         if self.Mode == "BONE":
             layout.prop(data, "Armature_Picker", text="Armature")
             if data.Armature_Picker:
@@ -62,7 +62,7 @@ class BONERA_Weight_Object(bpy.types.Operator):
         for object in objects:
             if object.type == "MESH":
 
-                name = object.name                
+                name = object.name
                 valid = False
                 if self.Mode == "NAME":
                     name = object.name
@@ -78,12 +78,12 @@ class BONERA_Weight_Object(bpy.types.Operator):
                                 valid = True
 
                 if valid:
-                    
+
                     group = None
 
                     if name:
                         group = object.vertex_groups.get(name)
-                        
+
                     if not group:
                         group = object.vertex_groups.new(name = name)
 

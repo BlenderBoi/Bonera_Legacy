@@ -143,7 +143,7 @@ class BONERA_Constraint_Selected_Bone_To_Armature(bpy.types.Operator):
                             constraint = bone.constraints.new("CHILD_OF")
                             constraint.target = control_rig
                             constraint.subtarget = control_rig.data.bones.get(bone.name).name
-                            
+
                     else:
                         self.report({"INFO"}, "Bone Not Found, Skipped " + bone.name)
 

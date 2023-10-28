@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 import mathutils
 
 OPERATOR_POLL_CONTEXT = ["OBJECT","EDIT_MESH","EDIT_CURVE","EDIT_ARMATURE", "POSE"]
@@ -1208,7 +1208,7 @@ class BONERA_OP_Create_Bones_From_Selected(bpy.types.Operator):
 
                                     # if self.Bind_Mode == "CONSTRAINT_BONE_TO_SELECTED":
                                     if bind_mode == "CONSTRAINT_BONE_TO_SELECTED":
-                                        
+
                                         constraint_bone = Armature_Object.pose.bones.get(Bone_Name)
 
                                         if constraint_bone is not None:

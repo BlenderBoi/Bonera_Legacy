@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 import mathutils
 
 OPERATOR_POLL_CONTEXT = ["EDIT_MESH","EDIT_CURVE"]

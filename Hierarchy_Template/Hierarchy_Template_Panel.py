@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 
 
@@ -157,7 +157,7 @@ class BONERA_ARMATURE_PT_Hierarchy_Template(bpy.types.Panel):
                 operator = box.operator("bonera.hierarchy_template_list_operator", text="New Template", icon="ADD")
                 operator.operation = "ADD"
                 operator.index = active_index
-                
+
 
         layout.operator("bonera.hierarchy_template_create_from_armature", text="Create Template From Armature", icon="PLUS")
 
@@ -231,7 +231,7 @@ class BONERA_HT_Children_List_Operator(bpy.types.Operator):
 
                     item_list =  active_parent.children
                     item_index = active_parent.active_index
-            
+
 
                     if self.operation == "REMOVE":
                         item_list.remove(self.index)
@@ -439,7 +439,7 @@ class BONERA_HT_Create_Template_From_Armature(bpy.types.Operator):
 
     skip_childless_bone: bpy.props.BoolProperty(default=False)
     new_template: bpy.props.BoolProperty(default=True)
-    
+
 
     def draw(self, context):
         layout = self.layout
@@ -457,7 +457,7 @@ class BONERA_HT_Create_Template_From_Armature(bpy.types.Operator):
 
         scn = context.scene
         selected_objects = [obj for obj in context.selected_objects if obj.type == "ARMATURE"]
-        
+
         mode = context.mode
 
 
@@ -492,7 +492,7 @@ class BONERA_HT_Create_Template_From_Armature(bpy.types.Operator):
                     bones = obj.data.bones
                 if mode == "EDIT_ARMATURE":
                     bones = obj.data.edit_bones
-                    
+
                 for bone in bones:
 
 
@@ -505,7 +505,7 @@ class BONERA_HT_Create_Template_From_Armature(bpy.types.Operator):
                         if not bone.select:
                             continue
 
-                    
+
                     parent_item = active_template.parent.add()
                     parent_item.name = bone.name
 
@@ -552,10 +552,10 @@ class BONERA_HT_Apply_Template_Hierarchy(bpy.types.Operator):
 
         scn = context.scene
         selected_objects = [obj for obj in context.selected_objects if obj.type == "ARMATURE"]
-        
+
         mode = context.mode
 
-        
+
 
         if len(selected_objects) > 0:
 
@@ -576,7 +576,7 @@ class BONERA_HT_Apply_Template_Hierarchy(bpy.types.Operator):
                     active_template = hierarchy_template[hierarchy_template_index]
 
                     # for bone in obj.data.bones:
-                        
+
                     for parent_item in active_template.parent:
                         bone = obj.data.edit_bones.get(parent_item.name)
 
@@ -632,10 +632,10 @@ class BONERA_Align_Parent_To_Child(bpy.types.Operator):
 
         scn = context.scene
         selected_objects = [obj for obj in context.selected_objects if obj.type == "ARMATURE"]
-        
+
         mode = context.mode
 
-        
+
 
         if len(selected_objects) > 0:
 
@@ -656,7 +656,7 @@ class BONERA_Align_Parent_To_Child(bpy.types.Operator):
                     if bone:
 
                         child_bone_pos = [cb.head for cb in bone.children]
-                        child_midpoint = Utility_Functions.midpoint(child_bone_pos, "CENTER") 
+                        child_midpoint = Utility_Functions.midpoint(child_bone_pos, "CENTER")
 
 
                         for child_bone in bone.children:
@@ -750,7 +750,7 @@ class BONERA_HT_Batch_Rename(bpy.types.Operator):
     def execute(self, context):
 
         scn = context.scene
-        
+
         bonera_data = scn.Bonera_Scene_Data
         hierarchy_template = bonera_data.Hierarchy_Template
         hierarchy_template_index = bonera_data.Hierarchy_Template_Index

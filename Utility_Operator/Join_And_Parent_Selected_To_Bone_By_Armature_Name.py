@@ -2,7 +2,7 @@
 import bpy
 from bpy_extras import anim_utils
 import os
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 
 
@@ -31,14 +31,14 @@ class BONERA_Join_And_Parent_Selected_To_Bone_By_Armature_Name(bpy.types.Operato
                 for object in objects:
                     for bone in object.data.bones:
                         bone.Bonera_Util_Property.parent_target = object.name
-                
+
                 bpy.ops.object.join()
 
                 Utility_Functions.object_switch_mode(master_armature, "EDIT")
 
                 for edit_bone in master_armature.data.edit_bones:
 
-                    bone = master_armature.data.bones.get(edit_bone.name) 
+                    bone = master_armature.data.bones.get(edit_bone.name)
 
                     if bone.parent == None:
 
@@ -47,7 +47,7 @@ class BONERA_Join_And_Parent_Selected_To_Bone_By_Armature_Name(bpy.types.Operato
                             if parent_bone:
 
                                 edit_bone.parent = parent_bone
-                        
+
 
                 for bone in master_armature.data.bones:
                     bone.Bonera_Util_Property.parent_target = ""
@@ -64,7 +64,7 @@ class BONERA_Join_And_Parent_Selected_To_Bone_By_Armature_Name(bpy.types.Operato
                 #     with context.temp_override(**override):
                 #         bpy.ops.object.join()
 
-                    
+
 
         Utility_Functions.update_UI()
         return {'FINISHED'}

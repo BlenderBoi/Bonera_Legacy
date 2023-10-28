@@ -1,6 +1,6 @@
 
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 import mathutils
 
@@ -122,7 +122,7 @@ class BONERA_Proximity_Parent(bpy.types.Operator):
 
 
 
-        
+
         Utility_Functions.object_switch_mode(armature, current_mode)
 
         Utility_Functions.update_UI()

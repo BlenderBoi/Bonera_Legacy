@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 #Editing bone
 
 ENUM_Fix_Mode = [("POLE_ANGLE", "Pole Angle", "Pole Angle"), ("ALIGN_BONE","Align Bone","Align Bone")]

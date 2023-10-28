@@ -1,7 +1,7 @@
 import bpy
 import bpy_extras.io_utils
 import json
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 
 def read_some_data(context, filepath):

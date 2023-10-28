@@ -1,6 +1,6 @@
 import bpy
 # from .. import Utility
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 class BONERA_PBL_Layer(bpy.types.PropertyGroup):
     bone : bpy.props.StringProperty()
@@ -373,7 +373,7 @@ class BONERA_PBL_List_Operator(bpy.types.Operator):
 
 
             if self.operation == "SOLO":
-                
+
                 if context.mode == "EDIT_ARMATURE":
                     bones_name = [bone.bone for bone in active_item.bones]
                     bones = obj.data.edit_bones
@@ -1173,7 +1173,7 @@ class BONERA_PT_Pseudo_Layer_Panel(bpy.types.Panel):
                         Operator = row.operator("bonera.pseudo_bone_layer_list_operator", text="New From Selected", icon="PLUS")
                         Operator.operation = "ADD"
                         Operator.index = index
-                        Operator.assign_Selected = True 
+                        Operator.assign_Selected = True
 
                         row = layout.row(align=True)
 

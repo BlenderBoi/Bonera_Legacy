@@ -1,11 +1,11 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 
 ENUM_Constraint = [("TRACK_TO","Track To","Track To"),("STRETCH_TO","Stretch To","Stretch To")]
 
 class BONERA_Create_Empties_From_Selected_Bones_And_Follow_Path(bpy.types.Operator):
-    """Create Empties From Selected Bones And Follow Path (Experimental) 
+    """Create Empties From Selected Bones And Follow Path (Experimental)
     Edit Armature | Pose"""
     bl_idname = "bonera.create_empties_from_selected_bones_and_follow_path"
     bl_label = "Create Empties And Follow Curve From Selected Bones (Experimental)"
@@ -43,10 +43,10 @@ class BONERA_Create_Empties_From_Selected_Bones_And_Follow_Path(bpy.types.Operat
         scn_data = scn.Bonera_Scene_Data
 
         if scn_data.Curve_Picker:
-            
+
             counter = 0
             if len(scn_data.Curve_Picker.data.splines) > 0:
-                total_length =scn_data.Curve_Picker.data.splines[0].calc_length() 
+                total_length =scn_data.Curve_Picker.data.splines[0].calc_length()
             else:
                 total_length = 0
 
@@ -69,7 +69,7 @@ class BONERA_Create_Empties_From_Selected_Bones_And_Follow_Path(bpy.types.Operat
                     empty = Utility_Functions.Create_Empty("Start_Empty")
                     constraint = empty.constraints.new("FOLLOW_PATH")
                     constraint.use_curve_follow = True
-                    
+
                     constraint.target = scn_data.Curve_Picker
                     constraint.offset = 0
                     track_constraint = bone.constraints.new("COPY_LOCATION")

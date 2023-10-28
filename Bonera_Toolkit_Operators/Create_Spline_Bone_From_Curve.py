@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 
 # FUTURE
@@ -15,7 +15,7 @@ def find_end_bone(self, count, bone):
                 self.end_bones.append((child, count))
             else:
                 find_end_bone(self, count + 1, child)
-    
+
 
 def separate_loose_curve(context, object):
 
@@ -38,12 +38,12 @@ def separate_loose_curve(context, object):
                     spline.points[0].select = True
                 bpy.ops.curve.select_linked()
                 bpy.ops.curve.separate()
-                
-                context.view_layer.update() 
+
+                context.view_layer.update()
 
                 separated_object = context.view_layer.objects[-1]
                 curves.append(separated_object)
-            
+
             curves.append(object)
 
             bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
@@ -142,21 +142,21 @@ class BONERA_Create_Spline_Bones_From_Curve(bpy.types.Operator):
             bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
 
             bpy.ops.object.skin_armature_create(modifier="Skin")
-            
+
             bpy.data.objects.remove(MESH_object)
 
             armature = context.view_layer.objects[-1]
             armature.data.display_type = "OCTAHEDRAL"
-            context.view_layer.update() 
+            context.view_layer.update()
 
-            root_bones = [bone for bone in armature.pose.bones if not bone.parent]         
+            root_bones = [bone for bone in armature.pose.bones if not bone.parent]
 
             for rb in root_bones:
                 find_end_bone(self, 2, rb)
 
             for bone_pair in self.end_bones:
-                
-                
+
+
 
                 constraint = bone_pair[0].constraints.new("SPLINE_IK")
                 constraint.chain_count = bone_pair[1]

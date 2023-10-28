@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 
 
 ENUM_Find = [("EXACT","Exact","Exact"),("INCLUDE","Include", "Include")]

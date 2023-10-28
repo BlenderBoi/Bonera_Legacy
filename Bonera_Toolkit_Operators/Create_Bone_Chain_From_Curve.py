@@ -1,5 +1,5 @@
 import bpy
-from Bonera_Toolkit import Utility_Functions
+from .. import Utility_Functions
 import mathutils
 
 OPERATOR_POLL_CONTEXT = ["OBJECT", "EDIT_CURVE"]
@@ -137,7 +137,7 @@ class BONERA_OP_Create_Bone_Chain_From_Curve(bpy.types.Operator):
     @classmethod
     def poll(cls, context):
         if context.object:
-            
+
             if context.object.type == "CURVE":
                 if context.mode in OPERATOR_POLL_CONTEXT:
                     return True
