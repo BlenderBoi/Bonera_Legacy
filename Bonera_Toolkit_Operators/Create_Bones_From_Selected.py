@@ -2,7 +2,7 @@ import bpy
 from .. import Utility_Functions
 import mathutils
 
-OPERATOR_POLL_CONTEXT = ["OBJECT","EDIT_MESH","EDIT_CURVE","EDIT_ARMATURE", "POSE"]
+OPERATOR_POLL_CONTEXT = ["OBJECT","EDIT_MESH","EDIT_CURVE","EDIT_ARMATURE", "POSE", "EDIT_LATTICE"]
 bezier_point_type = ["BEZIER"]
 point_type = ["POLY", "NURBS"]
 
@@ -312,7 +312,7 @@ class BONERA_OP_Create_Bones_From_Selected(bpy.types.Operator):
 
                         # col.prop(self, "BIND_Clear_Vertex_Group", text="Clear Vertex Group")
 
-                if context.mode == "EDIT_CURVE":
+                if context.mode in ["EDIT_CURVE","EDIT_LATTICE"]:
                     layout.prop(self, "Hook", text="Hook")
 
     def draw_elements(self, context, layout):
@@ -590,6 +590,22 @@ class BONERA_OP_Create_Bones_From_Selected(bpy.types.Operator):
                             binding_object = {"object": object, "indices": indices}
                             binding_objects.append(binding_object)
 
+                    if mode == "EDIT_LATTICE":
+
+                        Utility_Functions.object_switch_mode(object, "OBJECT")
+
+                        if object.type == "LATTICE":
+                            
+
+                            for i, point in enumerate(object.data.points):
+
+                                if point.select:
+                                    points.append(object.matrix_world @ point.co)
+                                    indices.append(i)
+
+                            binding_object = {"object": object, "indices": indices}
+                            binding_objects.append(binding_object)
+
                     if mode == "EDIT_CURVE":
 
                         if object.type == "CURVE":
@@ -760,9 +776,9 @@ class BONERA_OP_Create_Bones_From_Selected(bpy.types.Operator):
 
                                             obj.matrix_world = mw
 
-                        if mode == "EDIT_CURVE":
+                        if mode in ["EDIT_CURVE", "EDIT_LATTICE"]:
                             if self.Hook:
-                                if obj.type == "CURVE":
+                                if obj.type in ["CURVE", "LATTICE"]:
                                     Utility_Functions.Hook_Vertex_Bone(obj, Armature_Object, indices, New_Bone_Name, name=New_Bone_Name)
 
             if self.Mode == "INDIVIDUAL":
@@ -920,6 +936,23 @@ class BONERA_OP_Create_Bones_From_Selected(bpy.types.Operator):
                         for object in selected_objects:
 
                             Create_Lists = [{"location": Utility_Functions.get_object_center(object, self.Position_Mode), "name": self.Base_Name + object.name, "object": object , "indices": Utility_Functions.get_object_indices(object)} for object in selected_objects]
+
+                    if mode == "EDIT_LATTICE":
+
+                        for object in selected_objects:
+
+                            Utility_Functions.object_switch_mode(object, "OBJECT")
+
+                            if object.type == "LATTICE":
+
+
+                                point_counter = -1
+
+                                for count, point in enumerate(object.data.points):
+                                    if point.select:
+                                        point_counter += 1
+                                        Create_Lists.append({"location": point.co, "name": self.Base_Name + object.name + "_LATTICE_" + str(point_counter), "object": object, "indices": [count]})
+
 
                     if mode == "EDIT_MESH":
 
@@ -1134,6 +1167,7 @@ class BONERA_OP_Create_Bones_From_Selected(bpy.types.Operator):
                             Weight_Pair = {"object": obj, "indices": indices, "bone_name": New_Bone_Name}
                             Weight_Pair_List.append(Weight_Pair)
 
+
                             if mode == "EDIT_CURVE":
                                 if object_ref.type == "CURVE":
 
@@ -1181,6 +1215,13 @@ class BONERA_OP_Create_Bones_From_Selected(bpy.types.Operator):
                             if mode == "EDIT_CURVE":
                                 if self.Hook:
                                     if obj.type == "CURVE":
+                                        Utility_Functions.Hook_Vertex_Bone(obj, Armature_Object, indices, Bone_Name, name=Bone_Name)
+
+
+
+                            if mode == "EDIT_LATTICE":
+                                if self.Hook:
+                                    if obj.type == "LATTICE":
                                         Utility_Functions.Hook_Vertex_Bone(obj, Armature_Object, indices, Bone_Name, name=Bone_Name)
 
                             # if self.Bind_Mode in ["WEIGHT", "CONSTRAINT_BONE_TO_SELECTED"]:

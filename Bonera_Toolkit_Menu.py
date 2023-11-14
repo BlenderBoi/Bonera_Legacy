@@ -2,7 +2,7 @@ import bpy
 from . import Utility_Functions
 
 
-OPERATOR_POLL_CONTEXT = ["OBJECT","EDIT_MESH","EDIT_CURVE","EDIT_ARMATURE", "POSE"]
+OPERATOR_POLL_CONTEXT = ["OBJECT","EDIT_MESH","EDIT_CURVE","EDIT_ARMATURE", "POSE", "EDIT_LATTICE"]
 
 class BONERA_MT_Bonera_Toolkit_Menu(bpy.types.Menu):
     bl_label = "Bonera Toolkit"
