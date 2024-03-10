@@ -58,6 +58,7 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
     preclear_weight: bpy.props.BoolProperty(default=True)
 
     connect_bone: bpy.props.BoolProperty(default=True)
+    create_end_bone: bpy.props.BoolProperty(default=True)
     align_roll: bpy.props.BoolProperty(default=True)
 
     add_armature_modifier: bpy.props.BoolProperty(default=True)
@@ -133,6 +134,7 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
         #     layout.prop(self, "preclear_weight", text="Preclear Weight")
 
         layout.prop(self, "connect_bone", text="Connect Bone")
+        layout.prop(self, "create_end_bone", text="Create End Bone")
 
         layout.separator()
         layout.prop(self, "add_armature_modifier", text="Add Armature Modifier")
@@ -306,6 +308,9 @@ class BONERA_OT_Create_Bone_Chain_From_Select_Order(bpy.types.Operator):
                             if type(next_select_element) == bmesh.types.BMFace:
 
                                 tail_co = next_select_element.calc_center_median()
+                        elif self.create_end_bone:
+                            direction_vector = previous_bone.head - head_co
+                            tail_co = head_co + -direction_vector
 
 
 
