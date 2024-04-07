@@ -118,14 +118,14 @@ def reset_property(self, context):
 
 class BONERA_Reload_Widget_Categories(bpy.types.Operator):
     """Operator to reload widget categories"""
-    bl_idname = "bonera.reload_widget_categories"
-    bl_label = "Reload Widget Categories"
+    bl_idname = "bonera.reload_bone_shapes"
+    bl_label = "Reload Bone Shapes"
 
     def execute(self, context):
         # Call the function to reload widget categories
         reload_widget_categories()
 
-        self.report({'INFO'}, "Widget categories reloaded successfully")
+        self.report({'INFO'}, "Bone shapes reloaded successfully")
 
         return {'FINISHED'}
 
