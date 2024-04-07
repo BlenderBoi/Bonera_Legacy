@@ -324,6 +324,7 @@ class BONERA_user_preferences(bpy.types.AddonPreferences):
         layout.label(text="Bone Shapes", icon="BONE_DATA")
         row = layout.row(align=True)
         row.operator("bonera.open_bone_shape_folder", text="Open Bone Shape Folder", icon="FILE_FOLDER")
+        row.operator("bonera.reload_widget_categories", text="Reload widgets", icon="FILE_REFRESH")
 
     def draw(self, context):
         layout = self.layout

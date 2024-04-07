@@ -64,8 +64,12 @@ def ENUM_Widgets(self, context):
 
 ENUM_Position = [("CURSOR","Cursor","Cursor"),("CENTER","Center","Center")]
 
-Widget_Catagories = Utility_Functions.get_bone_shape_catagories()
+Widget_Catagories = None
 
+def reload_widget_categories():
+    global Widget_Catagories
+
+    Widget_Catagories = Utility_Functions.get_bone_shape_catagories()
 
 def ENUM_Bone_Shape_Catagory(self, context):
 
@@ -110,6 +114,20 @@ def reset_property(self, context):
         self.rotate = (0, 0, 0)
         self.scale = (1, 1, 1)
         self.reset_transform = False
+
+
+class BONERA_Reload_Widget_Categories(bpy.types.Operator):
+    """Operator to reload widget categories"""
+    bl_idname = "bonera.reload_widget_categories"
+    bl_label = "Reload Widget Categories"
+
+    def execute(self, context):
+        # Call the function to reload widget categories
+        reload_widget_categories()
+
+        self.report({'INFO'}, "Widget categories reloaded successfully")
+
+        return {'FINISHED'}
 
 # class BONAD_Add_Bone_Shapes(bpy.types.Operator):
 class BONERA_Add_Bone_Shapes(bpy.types.Operator):
@@ -156,7 +174,7 @@ class BONERA_Add_Bone_Shapes(bpy.types.Operator):
         layout = self.layout
         if context.mode == "OBJECT":
             layout.prop(self, "name", text="Name")
-        layout.prop(self, "bone_shape_catagory", text="Catagory")
+        layout.prop(self, "bone_shape_catagory", text="Category")
         layout.template_icon_view(self, "bone_shape_file", show_labels=False, scale=4.0, scale_popup = 4.0)
 
         if context.mode == "OBJECT":
@@ -254,11 +272,11 @@ class BONERA_Add_Bone_Shapes(bpy.types.Operator):
         return {'FINISHED'}
 
 
-classes = [BONERA_Add_Bone_Shapes]
+classes = [BONERA_Add_Bone_Shapes, BONERA_Reload_Widget_Categories]
 
 def register():
 
-
+    reload_widget_categories()
 
     for cls in classes:
         bpy.utils.register_class(cls)
