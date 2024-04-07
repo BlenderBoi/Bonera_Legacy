@@ -67,7 +67,7 @@ class BONERA_Add_Selected_Objects_To_Bone_Shape_Library(bpy.types.Operator):
         layout = self.layout
         layout.label(text="Make Sure to Save Your File First", icon="INFO")
         layout.label(text="Backup this File before Proceeding", icon="INFO")
-        layout.prop(self, "Catagory")
+        layout.prop(self, "Category")
 
 
     def execute(self, context):
